@@ -1,0 +1,84 @@
+package modell;
+
+import java.util.Random;
+
+public class CsodaGep {
+    Random rn = new Random();
+    String[] dalok;
+    int [] lottoSzelveny;
+    String totoSzelveny;
+    public CsodaGep(){
+        this(new String[0]);
+    }
+    
+    public CsodaGep(String dal){
+        this(new String[]{dal});
+    }
+    
+    public CsodaGep(String[] dalok){
+        ujraindit();
+        this.daltFelvesz(dalok);
+    }
+    
+    public void ujraindit(){
+//        this.generalLottoSzelveny();
+        this.generalTotoSzelveny();
+        this.dallalFeltolt();
+    }
+    private void generalLottoSzelveny(){
+        for (int i = 0; i < 5; i++) {
+            this.lottoSzelveny[i] = rn.nextInt(1,96);
+        }
+    }
+    public String[] kerLottoSzelveny(){
+        String [] lottoszamok = new String[this.lottoSzelveny.length];
+        for (int i = 0; i < this.lottoSzelveny.length; i++) {
+            lottoszamok[i] += this.lottoSzelveny[i] + ", ";
+        }
+        return lottoszamok;
+    }
+    
+    private void generalTotoSzelveny(){ 
+        int randomSzam;
+        for (int i = 0; i < 13; i++) {
+            this.totoSzelveny += i+1 + " ";
+        }
+            this.totoSzelveny += "\n";
+        for (int i = 0; i < 13; i++) {
+            randomSzam = rn.nextInt(1,16);
+            if(randomSzam >= 1 && randomSzam <=5){
+              this.totoSzelveny += "1 ";  
+            }
+            else if(randomSzam >= 6 && randomSzam <=10){
+               this.totoSzelveny += "x ";
+            }
+            else if(randomSzam >= 11 && randomSzam <=15){
+              this.totoSzelveny += "2 ";
+        }
+    }
+    }
+    public String kerTotoSzelveny(){
+        return this.totoSzelveny;
+    }
+    
+    public String kerDal(){
+        return this.dalok[rn.nextInt(dalok.length)];
+    }
+    
+    public void ujDal(String dal){
+        this.dalok[this.dalok.length] = dal;
+    }
+
+    private void dallalFeltolt() {
+        this.dalok = new String[3];
+        dalok[0] = "Hate being sober";
+        dalok[1] = "Till futher notice"; 
+        dalok[2] = "FEIN"; 
+    }
+
+    private void daltFelvesz(String[] dalok) {
+        for (int i = 0; i < dalok.length; i++) {
+            this.dalok[i] = dalok[i];
+        }
+    }
+}
