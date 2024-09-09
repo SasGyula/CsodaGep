@@ -5,7 +5,7 @@ import java.util.Random;
 public class CsodaGep {
     Random rn = new Random();
     String[] dalok;
-    int [] lottoSzelveny;
+    int [] lottoSzelveny = new int[5];
     String totoSzelveny;
     public CsodaGep(){
         this(new String[0]);
@@ -36,10 +36,10 @@ public class CsodaGep {
             }
         }
     }
-    public String[] kerLottoSzelveny(){
-        String [] lottoszamok = new String[this.lottoSzelveny.length];
+    public String kerLottoSzelveny(){
+        String lottoszamok = "";
         for (int i = 0; i < this.lottoSzelveny.length; i++) {
-            lottoszamok[i] += this.lottoSzelveny[i] + ", ";
+            lottoszamok += this.lottoSzelveny[i] + ", ";
         }
         return lottoszamok;
     }
