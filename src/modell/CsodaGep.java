@@ -21,13 +21,19 @@ public class CsodaGep {
     }
     
     public void ujraindit(){
-//        this.generalLottoSzelveny();
+        this.generalLottoSzelveny();
         this.generalTotoSzelveny();
         this.dallalFeltolt();
     }
     private void generalLottoSzelveny(){
-        for (int i = 0; i < 5; i++) {
-            this.lottoSzelveny[i] = rn.nextInt(1,96);
+        int db = 0;
+        int v;
+        while(db < this.lottoSzelveny.length){
+            v = rn.nextInt(90);
+            if(!benneVan(lottoSzelveny, v, db)){
+                this.lottoSzelveny[db] = v;
+                db++;
+            }
         }
     }
     public String[] kerLottoSzelveny(){
@@ -80,5 +86,12 @@ public class CsodaGep {
         for (int i = 0; i < dalok.length; i++) {
             this.dalok[i] = dalok[i];
         }
+    }
+    private boolean benneVan (int[] t, int szam, int db){
+        int i = 0;
+        while(i < db && (t[i] == szam)){
+            i++;
+        }
+        return i>0;
     }
 }
